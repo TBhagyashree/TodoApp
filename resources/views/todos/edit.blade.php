@@ -22,7 +22,7 @@
                    value="{{$todo->title}}"/>
         </div>
         <div class="p-1">
-            <textarea name="description" class="p-2 border " rows="4" cols="25"
+            <textarea name="description" class="p-2 border font-bold" rows="4" cols="20"
                       placeholder="Description">{{$todo->description}}</textarea>
         </div>
         <div class="p-2">

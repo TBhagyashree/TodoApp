@@ -36,6 +36,7 @@ class TodoController extends Controller
 
     public function show(Todo $todo)
     {
+
         return view('todos/show')->with(['todo' => $todo]);
     }
 
@@ -81,7 +82,7 @@ class TodoController extends Controller
             foreach ($request->stepName as $key => $value){
                 $id = $request->stepId[$key];
                 if(!$id){
-                    $todo->$steps()->create(['name'=> $value]);
+                    $todo->steps()->create(['name'=> $value]);
                 }
                 else{
                     $step = step::find($id);
