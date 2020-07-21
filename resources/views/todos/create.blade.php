@@ -24,16 +24,15 @@
             <textarea name="description" class="p-2 border text-bold rounded " rows="4" cols="25" placeholder="Description"></textarea>
         </div>
         <div class="p-2">
-            <h2 class="pb-2 text-bold px-2"> Add steps to your todo
-                <span class="fas fa-plus-circle px-2"></span></h2>
-            <input name="steps" class=" font-bold py-2 px-0 border rounded" placeholder="your steps here.."/>
+            @livewire('step')
         </div>
+
         <div class="p-1">
             {{-----------------------create button. this button will submit the form data and pass it to todos/store route. ---------------}}
             <input class="p-2 border  rounded" type="submit" value="Create"/>
         </div>
     </form>
-    @livewire('counter')
+
     {{--    --}}{{-----------------------back to doto list page i.e index/home page---------------}}
     {{--    <a href="{{route('todo.index')}}" class="py-3 px-3 bg-white-600  border rounded mx-5 cursor-pointer" >BACK</a>--}}
 

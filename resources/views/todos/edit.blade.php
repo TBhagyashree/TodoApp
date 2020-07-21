@@ -25,9 +25,12 @@
             <textarea name="description" class="p-2 border " rows="4" cols="25"
                       placeholder="Description">{{$todo->description}}</textarea>
         </div>
+        <div class="p-2">
+            @livewire('edit-step',['steps'=> $todo->steps])
+        </div>
         <div class="p-1">
             {{-----------------------create button. this button will submit the form data and pass it to todos/store route. ---------------}}
-            <input class="p-2 border rounded" type="submit" value="Create"/>
+            <input class="p-2 border rounded" type="submit" value="Update"/>
         </div>
         {{-----------------this field will show the current value of the selected todo for that we will pass the todo id to this function
         and after updating we will submit it to update route-------------------------------------}}

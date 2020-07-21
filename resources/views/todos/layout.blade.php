@@ -11,8 +11,8 @@
     <title>Todos</title>
 </head>
 <body>
-<div class="text-center font-weight-bold flex justify-center pt-10 ">
-    <div class=" width-1/3 px-8 border border-gray-600 rounded pt-5 pb-0">
+<div class="text-center font-weight-bold flex justify-center pt-10  ">
+    <div class=" width-1/3 p-6 mx-4  border border-gray-600 rounded pt-5 pb-0">
         @yield('content')
     </div>
 </div>

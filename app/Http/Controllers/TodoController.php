@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TodoCreateRequest;
+use App\step;
 use App\Todo;
 use Illuminate\Http\Request;
 
@@ -53,7 +54,15 @@ class TodoController extends Controller
         //Todo::create($request->all());
 //        //this will create todo of the authorized user.
 //        and will follow one to many relationship refer User.php
-        auth()->user()->todos()->create($request->all());
+         $todo = auth()->user()->todos()->create($request->all());
+         if($request->step)
+         {
+             foreach($request->step as $step)
+             {
+                 $todo->steps()->create(['name'=>$step]);
+             }
+         }
+
         return redirect(route('todo.index'))->with('message', 'Todo added Successfully!!');
     }
     //this will be called when a particular todo
@@ -68,6 +77,18 @@ class TodoController extends Controller
     {
 //        Todo::where('id',$todo->id)->update(['title'=>$request->title]);
         $todo->update(['title' => $request->title]);
+        if($request->stepName){
+            foreach ($request->stepName as $key => $value){
+                $id = $request->stepId[$key];
+                if(!$id){
+                    $todo->$steps()->create(['name'=> $value]);
+                }
+                else{
+                    $step = step::find($id);
+                    $step->update(['name'=> $value]);
+                }
+            }
+        }
         return redirect(route('todo.index'))->with('message', ' Todo updated successfully!!');  //if we want to go to some other route.
         //return redirect()->back()->with('message','Done');   //IF WE WANT to go back to the same page
     }
